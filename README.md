@@ -10,7 +10,7 @@ was produced by A Loewer and J Strasen and partly previously published on [Dryad
 ## Contents
 The root folder contains two scripts with included documentation to simulate the stochastic SMAD model 1) for a single cell (`single_path.m`) and 2) for a population of cells (`many_paths.m`). The second script allows for a comparison to experimental data using the objective function defined in the paper.
 
-The functions in the folder `+burstDetection` perform single cell analysis and compute the objective function. The folder `+forward` contains the SDE solver for the model and its dependencies. Experimental data is located in the folder `data`. The content of all three folders is needed to run the scripts.
+The functions in the folder `+burstDetection` perform single cell analysis and compute the objective function. The folder `+forward` contains the SDE solver for the model and its dependencies. Experimental data is located in the folder `data`. The contents of all three folders are needed to run the scripts.
 
 ## Usage
 Copy or clone the full content of this repository to your computer. The code can then be run in MATLAB from within the main folder of the copied code. The code is commented and you can get easily started by going through the two scripts. 
