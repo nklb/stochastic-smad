@@ -12,6 +12,30 @@ sigma = zeros(102,2);
 %% internalization, receptor-ligand and synthesis
 model = 'internalization';
 
+%% set options
+% dose of TGFb (0: 0 pM, 1: 1 pM, 2: 2.5 pM,  3: 5 pM, 4: 25 pM, 
+%               5: 100 pM, 6: 2 x 5 pM)
+dose = 5; 
+
+% remove negative paths
+remNeg = true;
+
+% fix seed (or not)
+sameSeed = false;
+
+% compute objective function
+obj_function = true;
+
+% add control paths
+controls = true;
+
+% time increment (mins)
+dt = 0.6;
+
+% final time (mins)
+T = 1440;
+
+%% model setup
 switch model
     case 'degradation'
         stoch_comp = [66; 67; 70]; 
@@ -41,29 +65,6 @@ switch model
     otherwise
         error('The stochastic model %s is not defined!', model);
 end
-
-%% set options
-% dose of TGFb (0: 0 pM, 1: 1 pM, 2: 2.5 pM,  3: 5 pM, 4: 25 pM, 
-%               5: 100 pM, 6: 2 x 5 pM)
-dose = 5; 
-
-% remove negative paths
-remNeg = true;
-
-% fix seed (or not)
-sameSeed = false;
-
-% compute objective function
-obj_function = true;
-
-% add control paths
-controls = true;
-
-% time increment (mins)
-dt = 0.6;
-
-% final time (mins)
-T = 1440;
 
 %% simulation
 [compPaths] = compPathsVectorized(1, P, sigma, dose, remNeg, sameSeed, ...
