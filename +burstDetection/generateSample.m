@@ -1,4 +1,4 @@
-function [hills_added,label] = generateSample(sample_size,diff_crit,noise_scale,x_min,x_max,max_peaks,width_min,width_range,height_min,height_range,show_plot)
+function [hills_added,label] = generateSample(sample_size,diff_crit,noise_scale,x_min,x_max,max_peaks,width_min,width_range,height_min,height_range)
 %%-------------------------------------------------
 % generates trajectories with artificial bursts to use as trainingsset for
 % burst detection and analyzis
@@ -17,9 +17,9 @@ function [hills_added,label] = generateSample(sample_size,diff_crit,noise_scale,
 %
 % example:
 % [samp,label] = generateSample(100);
-% [ala,features] = featP53(samp);
-% bursts_found = ala > 0 & label > 0;  % contains true positives of featP53
-% bursts_missed = ala == 0 & label > 0; % contains false negatives of featP53 
+% [detected,features] = burstDetect(samp);
+% bursts_found = detected > 0 & label > 0;  % contains true positives of burstDetect
+% bursts_missed = detected == 0 & label > 0; % contains false negatives of burstDetect 
 % 
 %%-------------------------------------------------
 if ~exist('sample_size','var')
@@ -52,9 +52,7 @@ end
 if ~exist('height_range','var')
     height_range = 2; % maximal_height = height_min + height_range 
 end
-if ~exist('show_plot','var')
-    show_plot = false; % bool: show a set of generated trajectories for visual quality check
-end
+
 
 load('data/Stimulation_100pM_2013.mat');
 population_mean=mean(DataOI_r,2);
