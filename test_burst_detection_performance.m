@@ -1,4 +1,4 @@
-import burstDetection.*;
+%import burstDetection.*;
 import burstDetection.generateSample;
 
 % generate new sample of artificial data to test the performance
@@ -48,8 +48,8 @@ end
 
 figure;
 plot(roc_test(:,2),roc_test(:,1),'ko');
-xlabel('FPR');
-ylabel('TPR');
+xlabel('False positve rate');
+ylabel('True positive rate');
 hold on;
 
 %% evaluate performance of default parameters

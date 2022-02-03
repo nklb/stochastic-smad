@@ -68,10 +68,6 @@ for i = 1:size(archetypes,1)
     prop_archetype(i)  = sum(classes==i)/length(classes);
 end
 
-% figure,plot(arctypes');
-% legend(num2str(sets(1)),num2str(sets(2)),num2str(sets(3)))
-
-
 for k = 1:sample_size
     take_archetype = randsample(1:size(archetypes,1),1,true,prop_archetype);
     base_trajectory = archetypes(take_archetype,:)';
