@@ -40,16 +40,17 @@ test_parameters = burst_detection_params.roc_parameters;
 
 %% run through the parameters and evaluete performance 
 roc_test = zeros(size(test_parameters,1),2);
-for i = 1:size(test_parameters,1)
+for i = 1:5:size(test_parameters,1)
     param = exp(test_parameters(i,:));
     roc_test(i,:) = eval_performance(param,trajecotries,timepoints,labels);
-    fprintf('%03d: tpr = %3.0f %% ; fpr = %3.0f %%\n',i,roc_test(i,:).*100);
+    fprintf('%3d: tpr = %3.0f %% ; fpr = %3.0f %%\n',i,roc_test(i,:).*100);
 end
 
 figure;
 plot(roc_test(:,2),roc_test(:,1),'ko');
 xlabel('False positve rate');
 ylabel('True positive rate');
+title('Burst detection ROC curve')
 hold on;
 
 %% evaluate performance of default parameters
