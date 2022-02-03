@@ -1,4 +1,3 @@
-%import burstDetection.*;
 import burstDetection.generateSample;
 
 % generate new sample of artificial data to test the performance
@@ -7,19 +6,16 @@ len = size(trajecotries,1);
 timepoints = 1:len;
 
 %% plot examples from synthetic paths
-figure(3);
+figure(3);clf;
+time = 0:5:1440;
 for k = 1:9
-    
-    if k == 1
-        clf;
-    end
     subplot(3,3,k);
-    dx = 0:5:1440;
-    plot(dx,trajecotries(:,k),'b-');hold on
+    
+    plot(time,trajecotries(:,k),'b-');hold on
     % plot labeled hills
     for l = 1:max(labels(:,k))
         take_this = labels(:,k)==l;
-        plot(dx(take_this),trajecotries(take_this,k),'r-','LineWidth',2);
+        plot(time(take_this),trajecotries(take_this,k),'r-','LineWidth',2);
     end
     title(sprintf('%d bursts',max(labels(:,k))));
     if ~isempty(intersect([1,4,7],k))
