@@ -1,16 +1,44 @@
 import burstDetection.*;
 import burstDetection.generateSample;
 
-% load set of parameters to evaluate ROC-curve
-burst_detection_params = load('data/ROC_parameters.mat','roc_performance','roc_parameters');
-test_parameters = burst_detection_params.roc_parameters;
-
 % generate new sample of artificial data to test the performance
 [trajecotries,labels]=generateSample(300);
 len = size(trajecotries,1);
 timepoints = 1:len;
 
-%% run through the parameters and evaluete performance
+%% plot examples from synthetic paths
+figure(3);
+for k = 1:9
+    
+    if k == 1
+        clf;
+    end
+    subplot(3,3,k);
+    dx = 0:5:1440;
+    plot(dx,trajecotries(:,k),'b-');hold on
+    % plot labeled hills
+    for l = 1:max(labels(:,k))
+        take_this = labels(:,k)==l;
+        plot(dx(take_this),trajecotries(take_this,k),'r-','LineWidth',2);
+    end
+    title(sprintf('%d bursts',max(labels(:,k))));
+    if ~isempty(intersect([1,4,7],k))
+        ylabel('nuc/cyt SMAD2 ratio');
+    end
+    if ~isempty(intersect([7,8,9],k))
+        xlabel('time / min');
+    end
+    
+end
+
+    
+%% evaluete performance (ROC) of burst detection 
+
+% load set of parameters to evaluate ROC-curve
+burst_detection_params = load('data/ROC_parameters.mat','roc_performance','roc_parameters');
+test_parameters = burst_detection_params.roc_parameters;    
+
+%% run through the parameters and evaluete performance 
 roc_test = zeros(size(test_parameters,1),2);
 for i = 1:size(test_parameters,1)
     param = exp(test_parameters(i,:));

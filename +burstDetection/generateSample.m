@@ -108,31 +108,6 @@ for k = 1:sample_size
     end
     label(7:40,k) = 1; % label initial peak from base signal
     hills_added(:,k) = trajectory;
-    
-    %% plot examples
-    if show_plot && k <= 9
-        figure(3);
-        if k == 1
-            clf;
-        end
-        subplot(3,3,k);
-        dx = 0:5:1390;
-        plot(dx,trajectory,'b-');hold on
-        % plot labeled hills
-        for l = 1:(length(features)+1)
-            take_this = label(:,k)==l;
-            plot(dx(take_this),trajectory(take_this),'r-','LineWidth',2);
-        end
-        title(sprintf('%d bursts',max(label(:,k))));
-        if ~isempty(intersect([1,4,7],k))
-            ylabel('nuc/cyt SMAD2 ratio');
-        end
-        if ~isempty(intersect([7,8,9],k))
-            xlabel('time / min');
-        end
-        
-    end
+   
 end
-
 end
-
