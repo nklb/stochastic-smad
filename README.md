@@ -4,7 +4,7 @@ Simulation code of the TGF-β/SMAD pathway in single cells as used for the paper
 
 by N Kolbe, L Hexemer, LM Bammert, A Loewer, M Lukáčová-Medviďová and S Legewie
 
-A preprint of the paper is available on [arXiv](https://arxiv.org/abs/2107.11770).
+published Open Access in [PLoS Computational Biology](https://doi.org/10.1371/journal.pcbi.1010266).
 
 Matlab codes were developed by N Kolbe, L Hexemer, LM Bammert and data contained in this Repository
 was produced by A Loewer and J Strasen and partly previously published on [Dryad](https://datadryad.org/stash/dataset/doi:10.5061/dryad.hc5dp).
